@@ -1,7 +1,10 @@
 <?php
 
     require('../database/connect_database.php');
-
+    if (isset($_SESSION["signedin"]) && $_SESSION["signedin"] == '1'){
+        echo 'already loged';
+        
+    }
     echo isset($_POST['username']);
 
     echo isset($_POST['password']);
