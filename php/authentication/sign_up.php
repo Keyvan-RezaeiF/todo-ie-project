@@ -30,7 +30,7 @@
                         //header('Location:Dashboard.php?page=dash');
                         echo "1 Record added";
                     } else {
-                        echo "Error inserting person: " . mysqli_error($con);
+                        echo "Error inserting User: " . mysqli_error($con);
                     }
                 }
             }else

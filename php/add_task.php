@@ -16,11 +16,11 @@
 <body>
 
 
-    <form action="log_in.php" method="POST">
+    <form action="database\insert_task.php" method="POST">
         <br>Title: <input type="text" name="title">
         <br>start_date: <input type="date" name="start_date">
         <br>due_date: <input type="date" name="due_date">
-        <br><input type="submit" value="Log In">
+        <br><input type="submit" value="add Task">
     </form>
 
 </body>
