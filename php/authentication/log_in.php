@@ -2,7 +2,7 @@
     session_start();
     require('../database/connect_database.php');
     if (isset($_SESSION["signedin"]) && $_SESSION["signedin"] == '1')
-        //header('Location: Dashboard.php?page=dash');
+        header('Location: ../index.html');
         echo 'already loged';
     if (isset($_POST['username']) && isset($_POST['password'])) {
         $username = $_POST['username'];
@@ -15,7 +15,7 @@
                 if (!empty($username) && !empty($acc_password) && $username == $row[1] && $acc_password == $row[2]) {
                     $_SESSION['signedin'] = 1;
                     $_SESSION['username'] =  $row[0];
-                    //header('Location: Dashboard.php?page=dash');
+                    header('Location: ../index.html');
                     echo 'Loged In.'; 
                 }    
             }else{
