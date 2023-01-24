@@ -1,9 +1,11 @@
 <?php
     session_start();
     require('../database/connect_database.php');
-    if (isset($_SESSION["signedin"]) && $_SESSION["signedin"] == '1')
-        header('Location: ../index.html');
+    if (isset($_SESSION["signedin"]) && $_SESSION["signedin"] == '1'){
         echo 'already loged';
+        
+
+    }
     if (isset($_POST['username']) && isset($_POST['password'])) {
         $username = $_POST['username'];
         $acc_password = $_POST['password'];
