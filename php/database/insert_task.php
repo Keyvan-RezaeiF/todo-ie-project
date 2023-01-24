@@ -6,6 +6,10 @@
     $due_date = $_POST['due_date'];
     $done_status = false;
     $username = $_SESSION['username'];
+    $today = date("Y-m-d") ;
+    if($start_date<$today || $due_date<$today || $due_date<$start_date){
+        echo 'really????';
+    }else {
     $sql="SELECT * FROM Users where username = '" .$username . "'";
     if (($result=mysqli_query($con,$sql))){
         $row=mysqli_fetch_row($result);
@@ -19,5 +23,5 @@
         }
     }
     header('Location: ..\index.html');
-    
+}
 ?>
