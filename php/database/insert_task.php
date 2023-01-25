@@ -15,7 +15,7 @@
         $row=mysqli_fetch_row($result);
         $sql="INSERT INTO Task (title,start_time,due_time,done_status,userID)
         VALUES
-        ('$title','$start_date','$due_date','$done_status','$row[1]')";
+        ('$title','$start_date','$due_date','$done_status','$row[0]')";
         if (mysqli_query($con, $sql)) {
             echo "1 Record added";
         } else {

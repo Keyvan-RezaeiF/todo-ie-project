@@ -17,6 +17,7 @@
                 if (!empty($username) && !empty($acc_password) && $username == $row[1] && $acc_password == $row[2]) {
                     $_SESSION['signedin'] = 1;
                     $_SESSION['username'] =  $row[1];
+                    $_SESSION['userID'] =  $row[0];
                     header('Location: ../index.html');
                     echo 'Loged In.'; 
                 }    
