@@ -19,7 +19,9 @@ start_time date,
 due_time date ,
 done_status boolean,
 userID int,
-FOREIGN KEY (userID) REFERENCES Users(userID)
+FOREIGN KEY (userID) REFERENCES Users(userID),
+catagoryID int,
+FOREIGN KEY (catagoryID) REFERENCES Catagory(catagoryID)
 )";
 
 $sql3 = "CREATE TABLE Catagory
@@ -30,15 +32,7 @@ title varchar(15) UNIQUE,
 userID int,
 FOREIGN KEY (userID) REFERENCES Users(userID)
 )";
-$sql4 = "CREATE TABLE Catagorize
-(
-taskCaragoryID int NOT NULL AUTO_INCREMENT,
-PRIMARY KEY(taskCaragoryID),
-taskID int,
-FOREIGN KEY (taskID) REFERENCES Users(taskID),
-catagoryID int,
-FOREIGN KEY (catagoryID) REFERENCES Catagory(catagoryID)
-)";
+
 if (mysqli_query($con,$sql1))
 {
 echo "Table created";
@@ -63,13 +57,6 @@ else
 {
 echo "Error creating table: " . mysqli_error($con);
 }
-if (mysqli_query($con,$sql4))
-{
-echo "Table created";
-}
-else
-{
-echo "Error creating table: " . mysqli_error($con);
-}
+
 mysqli_close($con);
 ?>

@@ -4,7 +4,7 @@
     $title = $_POST['title'];
     $userID = $_SESSION['userID'];
 
-        $sql="INSERT INTO Catagory (title,,userID)
+        $sql="INSERT INTO Catagory (title,userID)
         VALUES
         ('$title','$userID')";
         if (mysqli_query($con, $sql)) {
