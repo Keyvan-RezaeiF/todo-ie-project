@@ -6,7 +6,7 @@ $sql1= "CREATE TABLE Users
 (
 userID int NOT NULL AUTO_INCREMENT,
 PRIMARY KEY(userID),
-username varchar(15),
+username varchar(15) UNIQUE,
 acc_password varchar(15)
 )";
 
@@ -26,7 +26,9 @@ $sql3 = "CREATE TABLE Catagory
 (
 catagoryID int NOT NULL AUTO_INCREMENT,
 PRIMARY KEY(catagoryID),
-title varchar(15)
+title varchar(15) UNIQUE,
+userID int,
+FOREIGN KEY (userID) REFERENCES Users(userID)
 )";
 $sql4 = "CREATE TABLE Catagorize
 (
