@@ -10,8 +10,10 @@
 
     <?php
       include './php/tasks.php';
+      include './php/catagories.php';
       echo('
-        <p style="display: none;">' . $test . '</p>
+        <p style="display: none;" id="fetched-tasks">' . $tasks . '</p>
+        <p style="display: none;" id="fetched-categories">' . $categories . '</p>
       ');
     ?>
     <form class="form" id="form">

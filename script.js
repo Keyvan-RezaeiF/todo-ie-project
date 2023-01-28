@@ -49,30 +49,18 @@
 //   },
 // ]
 
-const categories = [
+const defaultCategories = [
   {
-    name: 'All',
+    title: 'All',
     id: 0,
   },
   {
-    name: 'Remained',
+    title: 'Remained',
     id: 1,
   },
   {
-    name: 'Finished',
+    title: 'Finished',
     id: 2,
-  },
-  {
-    name: 'Outwork',
-    id: 3,
-  },
-  {
-    name: 'Study',
-    id: 4,
-  },
-  {
-    name: 'Sport',
-    id: 5,
   },
 ]
 
@@ -90,8 +78,7 @@ const filterByCategory = (catagoryID) => {
     filtered = todos.filter(fakeTodo => fakeTodo.done_status === '1')
     todosContainer.insertAdjacentHTML('afterbegin', todosMaker(filtered))
   } else {
-    const categoryName = categories.find(category => category.id === catagoryID).name
-    filtered = todos.filter(fakeTodo => fakeTodo.categoryName === categoryName)
+    filtered = todos.filter(fakeTodo => fakeTodo.catagoryID === catagoryID.toString())
     todosContainer.insertAdjacentHTML('afterbegin', todosMaker(filtered))
   }
 }
@@ -128,24 +115,27 @@ const deleteHandler = (id) => {
 
 const todosMaker = (items) => {
   let madeTodos = ''
+  console.log(items)
   for (let item of items) {
+    const catagoryName = categories.find(category => category.catagoryID === item.catagoryID).title
+
     madeTodos += `
       <div class="todo-item">
         <div class="task-desc">
-          <span class="start-date">start date: ${(new Date(+item.startDate)).toDateString()}</span>
-          ${item.endDate?`<span class="end-date">end date: ${(new Date(+item.endDate)).toDateString()}</span>`:''}
-          <span class="category">${item.categoryName}</span>
+          <span class="start-date">start date: ${(new Date(item.start_time)).toDateString()}</span>
+          ${item.due_time?`<span class="end-date">end date: ${(new Date(item.due_time)).toDateString()}</span>`:''}
+          <span class="category">${catagoryName}</span>
           <h3 class="title">${item.title}</h3>
         </div>
         <div class="task-options">
           <span class="delete">
-            <svg onclick="deleteHandler(${item.id})" width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg onclick="deleteHandler(${item.taskID})" width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M3.79167 2.16667C3.79167 1.56836 4.27669 1.08334 4.875 1.08334H8.125C8.72331 1.08334 9.20833 1.56836 9.20833 2.16667V3.25H10.2861C10.2894 3.24997 10.2928 3.24997 10.2961 3.25H11.375C11.6742 3.25 11.9167 3.49252 11.9167 3.79167C11.9167 4.09082 11.6742 4.33334 11.375 4.33334H10.796L10.3262 10.9105C10.2857 11.4774 9.814 11.9167 9.24564 11.9167H3.75435C3.186 11.9167 2.71427 11.4774 2.67377 10.9105L2.20398 4.33334H1.625C1.32584 4.33334 1.08333 4.09082 1.08333 3.79167C1.08333 3.49252 1.32584 3.25 1.625 3.25H2.70386C2.70722 3.24997 2.71057 3.24997 2.71392 3.25H3.79167V2.16667ZM4.875 3.25H8.125V2.16667H4.875V3.25ZM3.29007 4.33334L3.75435 10.8333H9.24564L9.70993 4.33334H3.29007ZM5.41667 5.41667C5.71582 5.41667 5.95833 5.65918 5.95833 5.95834V9.20834C5.95833 9.50749 5.71582 9.75 5.41667 9.75C5.11751 9.75 4.875 9.50749 4.875 9.20834V5.95834C4.875 5.65918 5.11751 5.41667 5.41667 5.41667ZM7.58333 5.41667C7.88249 5.41667 8.125 5.65918 8.125 5.95834V9.20834C8.125 9.50749 7.88249 9.75 7.58333 9.75C7.28418 9.75 7.04167 9.50749 7.04167 9.20834V5.95834C7.04167 5.65918 7.28418 5.41667 7.58333 5.41667Z" fill="#616161"/>
             </svg>
           </span>
 
           <span>
-            <input ${item.done_status === '1'?'checked':''} onclick="checkHandler(this,${item.id})" type="checkbox" id="isDone" name="isDone" value="isDone">
+            <input ${item.done_status === '1' ? 'checked' : ''} onclick="checkHandler(this,${item.taskID})" type="checkbox" id="isDone" name="isDone" value="isDone">
             <label for="isDone">Is done</label>
           </span>
 
@@ -160,9 +150,17 @@ const todosMaker = (items) => {
 const fillCategories = () => {
   const categoriesoptions = document.getElementById('categories')
 
+  for (category of defaultCategories) {
+    let str = `
+      <option value='${category.title}'>${category.title}</option>
+    `
+
+    categoriesoptions.insertAdjacentHTML('afterbegin', str)
+  }
+
   for (category of categories){
     let str = `
-      <option value='${category.name}'>${category.name}</option>
+      <option value='${category.title}'>${category.title}</option>
     `
     categoriesoptions.insertAdjacentHTML('afterbegin', str)
   }
@@ -170,10 +168,20 @@ const fillCategories = () => {
 
 const categoriesMaker = (categories) => {
   let madeCategories = ''
-  for (category of categories) {
+
+  for (category of defaultCategories) {
     madeCategories += `
       <span class='category' onclick='filterByCategory(${category.id})'>
-        ${category.name}
+        ${category.title}
+      </span>
+    `;
+  }
+
+  for (category of categories) {
+    console.log(category)
+    madeCategories += `
+      <span class='category' onclick='filterByCategory(${category.catagoryID})'>
+        ${category.title}
       </span>
     `;
   }
@@ -190,9 +198,11 @@ const addCategory = () => {
   console.log('add category')
 }
 
-const fakeTodos = document.querySelector('p')
+const fakeTodos = document.querySelector('#fetched-tasks')
+const fakeCatagories = document.querySelector('#fetched-categories')
 const todos = JSON.parse(fakeTodos.textContent)
-console.log(todos)
+const categories = JSON.parse(fakeCatagories.textContent)
+console.log(categories)
 
 const todosContainer = document.querySelector('.todos-container')
 todosContainer.insertAdjacentHTML('afterbegin', todosMaker(todos))
