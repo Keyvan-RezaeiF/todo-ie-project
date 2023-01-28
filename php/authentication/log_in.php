@@ -16,7 +16,7 @@
           $_SESSION['signedin'] = 1;
           $_SESSION['username'] =  $row[1];
           $_SESSION['userID'] =  $row[0];
-          header('Location: ../tasks.php');
+          header('Location: ../../todos.php');
           echo 'Loged In.';
         }
       } else {

@@ -4,8 +4,14 @@
   $status = $_GET['status'];
   $ID = $_GET['id'];
   echo $status;
-  echo 'asasada';
   echo $ID;
+
+  if ($status == 0) {
+    $status = 1;
+  } else if ($status == 1) {
+    $status = 0;
+  }
+
   $sql=" UPDATE Task
   SET done_status = '" .$status . "'
   WHERE taskID =  '" .$ID . "'; ";
@@ -14,5 +20,5 @@
   } else {
       echo "Error inserting User: " . mysqli_error($con);
   }
-  //header('Location: tasks.php');
+  header('Location: ../todos.php');
 ?>

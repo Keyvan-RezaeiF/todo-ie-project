@@ -14,26 +14,15 @@
       echo('
         <p style="display: none;" id="fetched-tasks">' . $tasks . '</p>
         <p style="display: none;" id="fetched-categories">' . $categories . '</p>
+        <h1 style="text-align: center">Hello, ' . $username . '!</h1>
       ');
     ?>
-    <form class="form" id="form">
-      <div>
-        <label for="task">Task:</label>
-        <input class="text-input" type="text" id="task" name="task" />
-      </div>
 
-      <div>
-        <label for="categories">Choose a category:</label>
-        <div>
-          <select class="categories" name="categories" id="categories">
-          </select>
-        </div>
-      </div>
-
-      <div class="button-container">
+    <div class="button-container">
+      <a href='./php/add_task.php'>
         <button class="submit-button" type="submit">Add task</button>
-      </div>
-    </form>
+      </a>
+    </div>
 
     <div class='categories-container'></div>
 
