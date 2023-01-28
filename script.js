@@ -1,54 +1,3 @@
-// let todos = [
-//   {
-//     title: 'test1',
-//     startDate: '1674141733711',
-//     endDate: '1674141833711',
-//     categoryName: 'Sport',
-//     isDone: true,
-//     id: 1,
-//   },
-//   {
-//     title: 'test2',
-//     startDate: '1674141533711',
-//     endDate: '1674141833711',
-//     categoryName: 'Sport',
-//     isDone: true,
-//     id: 2,
-//   },
-//   {
-//     title: 'test3',
-//     startDate: '1674040733711',
-//     endDate: null,
-//     categoryName: 'Study',
-//     isDone: true,
-//     id: 3,
-//   },
-//   {
-//     title: 'test4',
-//     startDate: '1674141733711',
-//     endDate: '1674141833711',
-//     categoryName: 'Study',
-//     isDone: false,
-//     id: 4,
-//   },
-//   {
-//     title: 'test5',
-//     startDate: '1674141533711',
-//     endDate: '1674141833711',
-//     categoryName: 'Outwork',
-//     isDone: false,
-//     id: 5,
-//   },
-//   {
-//     title: 'test6',
-//     startDate: '1674040733711',
-//     endDate: null,
-//     categoryName: 'Outwork',
-//     isDone: false,
-//     id: 6,
-//   },
-// ]
-
 const defaultCategories = [
   {
     title: 'All',
@@ -114,8 +63,8 @@ const deleteHandler = (id) => {
 }
 
 const todosMaker = (items) => {
+  if (items.length === 0) return "<h2 style='text-align: center;'>There is no Task!<br/>You're free! :)</h2>"
   let madeTodos = ''
-  console.log(items)
   for (let item of items) {
     const catagoryName = categories.find(category => category.catagoryID === item.catagoryID).title
 
@@ -164,7 +113,6 @@ const categoriesMaker = (categories) => {
   }
 
   for (category of categories) {
-    console.log(category)
     madeCategories += `
       <span class='category' onclick='filterByCategory(${category.catagoryID})'>
         ${category.title}
@@ -180,23 +128,21 @@ const categoriesMaker = (categories) => {
   return madeCategories
 }
 
-const addCategory = () => {
-  console.log('add category')
-}
-
 const fakeTodos = document.querySelector('#fetched-tasks')
 const fakeCatagories = document.querySelector('#fetched-categories')
 const todos = JSON.parse(fakeTodos.textContent)
 const categories = JSON.parse(fakeCatagories.textContent)
-console.log(categories)
 
 const todosContainer = document.querySelector('.todos-container')
 todosContainer.insertAdjacentHTML('afterbegin', todosMaker(todos))
 
-const categoriesContainer = document.querySelector('.categories-container')
-categoriesContainer.insertAdjacentHTML('afterbegin', categoriesMaker(categories))
+console.log(todos.length)
+if (todos.length) {
+  const categoriesContainer = document.querySelector('.categories-container')
+  categoriesContainer.insertAdjacentHTML('afterbegin', categoriesMaker(categories))
+}
 
-const submitForm = (event)=>{
+const submitForm = (event) => {
   event.preventDefault();
   let title = document.getElementById('task').value
   let category = document.getElementById('categories').value

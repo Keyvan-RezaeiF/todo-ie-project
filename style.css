@@ -7,6 +7,9 @@
 .categories-container {
   margin: 20px auto 0;
   width: 80%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .categories-container .category {
@@ -14,6 +17,7 @@
   margin-right: 5px;
   border-radius: 5px;
   padding: 5px 10px;
+  margin-bottom: 3px;
 }
 
 .categories-container .category:hover {
@@ -22,7 +26,7 @@
 }
 
 .todos-container {
-  margin: 20px auto 0;
+  margin: 10px auto 0;
   width: 80%;
 }
 
@@ -112,4 +116,9 @@
 .delete {
   text-align: right;
   cursor: pointer;
+}
+
+.navbar a {
+  width: 100%;
+  text-align: center;
 }
