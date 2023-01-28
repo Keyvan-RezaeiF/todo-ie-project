@@ -7,6 +7,8 @@ $sql1= "CREATE TABLE Users
 userID int NOT NULL AUTO_INCREMENT,
 PRIMARY KEY(userID),
 username varchar(15) UNIQUE,
+first_name varchar(15) ,
+last_name  varchar(15) ,
 acc_password varchar(15)
 )";
 

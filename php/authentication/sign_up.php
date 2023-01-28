@@ -7,6 +7,8 @@
   // echo isset($_POST['password']);
   if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
+    $firstname = $_POST['first_name'];
+    $lastname = $_POST['last_name'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
     echo $confirm_password;
@@ -18,9 +20,9 @@
         if (mysqli_num_rows($result)>0) {
           echo "cant sign up.";
         } else {
-          $sql="INSERT INTO Users (username, acc_password)
+          $sql="INSERT INTO Users (username,first_name,last_name, acc_password)
                 VALUES
-                ('$username','$password')";
+                ('$username','$firstname','$lastname','$password')";
           if (mysqli_query($con, $sql)) {
             header('Location: ../../todos.php');
           } else {
