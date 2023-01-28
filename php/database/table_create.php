@@ -1,5 +1,5 @@
 <?php
-require('connect_database.php');
+  require('connect_database.php');
 
 
 $sql1= "CREATE TABLE Users
@@ -10,7 +10,16 @@ username varchar(15) UNIQUE,
 acc_password varchar(15)
 )";
 
-$sql2 = "CREATE TABLE Task
+$sql2 = "CREATE TABLE Catagory
+(
+catagoryID int NOT NULL AUTO_INCREMENT,
+PRIMARY KEY(catagoryID),
+title varchar(15) UNIQUE,
+userID int,
+FOREIGN KEY (userID) REFERENCES Users(userID)
+)";
+
+$sql3 = "CREATE TABLE Task
 (
 taskID int NOT NULL AUTO_INCREMENT,
 PRIMARY KEY(taskID),
@@ -24,14 +33,6 @@ catagoryID int,
 FOREIGN KEY (catagoryID) REFERENCES Catagory(catagoryID)
 )";
 
-$sql3 = "CREATE TABLE Catagory
-(
-catagoryID int NOT NULL AUTO_INCREMENT,
-PRIMARY KEY(catagoryID),
-title varchar(15) UNIQUE,
-userID int,
-FOREIGN KEY (userID) REFERENCES Users(userID)
-)";
 
 if (mysqli_query($con,$sql1))
 {
