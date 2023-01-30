@@ -10,7 +10,7 @@
         }
         require('database/connect_database.php');
         if (!isset($_SESSION["signedin"]) && $_SESSION["signedin"] != '1'){
-          header('Location: ../todos.php');
+          header('Location: ../php/authentication/log_in.html');
         }
         $userID = $_SESSION['userID'];
         $sql="SELECT * FROM Task where userID ='" .$userID . "'";
