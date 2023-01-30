@@ -173,8 +173,6 @@ const checkForTodaysTasks = () => {
   for (let todo of todos) {
     const taskDay = new Date(todo.due_time)
 
-    console.log(taskDay.toDateString(), today.toDateString())
-
     if (taskDay.toDateString() === today.toDateString()) {
       alert(`You have a task with the title of "${todo.title}" today!`)
     }
