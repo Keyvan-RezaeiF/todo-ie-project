@@ -161,3 +161,22 @@ const submitForm = (event) => {
 
   filterByCategory(currentFilter)
 }
+
+let hasShownNotif = false
+
+const checkForTodaysTasks = () => {
+  if (hasShownNotif) return
+
+  const today = new Date()
+  for( let todo of todos) {
+    const taskDay = new Date(+todo.endDate)
+
+    if(taskDay.toDateString() === today.toDateString()) {
+      alert(`you have a task with the title of "${todo.title}" todo today`)
+    }
+  }
+}
+
+checkForTodaysTasks()
+
+const myTimeout = setTimeout(checkForTodaysTasks, 300000);
