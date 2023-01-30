@@ -21,17 +21,19 @@
           $_SESSION['last_name'] =  $row[3];
           header('Location: ../../todos.php');
         } else {
-          header('Location: log_in.html');
+          $error = 'Enter username and password';
+          header('Location: log_in.html?error='.$error.' ');
         }
       } else {
-        header('Location: log_in.html');
-        echo 'You must enter a correct username and password.';
+        $error = 'Enter username and password';
+        header('Location: log_in.html?error='.$error.' ');
       }
     } else {
-      header('Location: log_in.html');
-      echo "Error Inserting table: " . mysqli_error($con);
+        $error = 'NO RECORD';
+        header('Location: log_in.html?error='.$error.' ');
     }
   } else {
-    header('Location: log_in.html');
+    $error = 'fields are filled ';
+          header('Location: log_in.html?error='.$error.' ');
   }
 ?>
