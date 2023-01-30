@@ -24,11 +24,14 @@
     </nav>
 
     <?php
-      session_start();
-      $firstName = $_SESSION['first_name'];
-      $lastName = $_SESSION['last_name'];
+      
       include './php/tasks.php';
       include './php/catagories.php';
+      if (!isset($_SESSION)) {
+        session_start();
+      }
+      $firstName = $_SESSION['first_name'];
+      $lastName = $_SESSION['last_name'];
       echo('
         <p style="display: none;" id="fetched-tasks">' . $tasks . '</p>
         <p style="display: none;" id="fetched-categories">' . $categories . '</p>
