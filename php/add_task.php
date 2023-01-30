@@ -46,7 +46,10 @@
       </div>
       <div class="dates">
         <br>start_date: <input type="date" name="start_date">
+        <br>
         <br>due_date: <input type="date" name="due_date">
+        <br>
+        <br>
       </div>
       <div class="button-container">
         <button class="submit-button" type="submit" value="add Task">Add task</button>
