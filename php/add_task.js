@@ -16,3 +16,5 @@ console.log(categories)
 fillCategories()
 // let form = document.getElementById('form')
 // form.addEventListener('submit', submitForm);
+
+localStorage.setItem('hasShownNotif', false)

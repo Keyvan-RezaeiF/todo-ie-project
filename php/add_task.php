@@ -45,9 +45,9 @@
         </select>
       </div>
       <div class="dates">
-        <br>start_date: <input type="date" name="start_date">
+        <br>start date: <input type="date" name="start_date">
         <br>
-        <br>due_date: <input type="date" name="due_date">
+        <br>due date: <input type="date" name="due_date">
         <br>
         <br>
       </div>
