@@ -16,5 +16,5 @@
         } else {
             echo "Error inserting User: " . mysqli_error($con);
         }
-    header('Location: tasks.php');
+    header('Location: ../../todos.php');
 ?>
