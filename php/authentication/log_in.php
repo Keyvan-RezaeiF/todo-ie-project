@@ -21,19 +21,20 @@
           $_SESSION['last_name'] =  $row[3];
           header('Location: ../../todos.php');
         } else {
-          $error = 'Enter username and password';
-          header('Location: log_in.html?error='.$error.' ');
+          echo 'problem loging in';
+          echo "<a href='log_in.html'></a>";
         }
       } else {
-        $error = 'Enter username and password';
-        header('Location: log_in.html?error='.$error.' ');
+        echo 'No Uesr Found';
+        echo "<a href='log_in.html'></a>";
       }
     } else {
-        $error = 'NO RECORD';
-        header('Location: log_in.html?error='.$error.' ');
+
+        echo 'The Users are having a problem';
+        echo "<a href='log_in.html'></a>";
     }
   } else {
-    $error = 'fields are filled ';
-          header('Location: log_in.html?error='.$error.' ');
-  }
+          echo 'the field arent filled';
+          echo "<a href='log_in.html'></a>";
+    }
 ?>
