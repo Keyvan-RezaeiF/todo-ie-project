@@ -21,9 +21,10 @@
         if (mysqli_num_rows($result)>0) {
           echo "cant sign up.";
         } else {
-          $sql="INSERT INTO Users (username,first_name,last_name, acc_password)
+                $sql="INSERT INTO Users (username,first_name,last_name, acc_password)
                 VALUES
                 ('$username','$firstname','$lastname','$password')";
+                mysqli_query($con,$sql)
                 $sql="SELECT * FROM Users where username = '" .$username . "'";
                 $result=mysqli_query($con,$sql);
                 $row=mysqli_fetch_row($result);
