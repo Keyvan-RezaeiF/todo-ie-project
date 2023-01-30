@@ -17,19 +17,22 @@
           <li class="active"><a href="#">Tasks</a></li>
           <li><a href="./php/add_task.php">Add Task</a></li>
           <li><a href="./php/add_category.php">Add Category</a></li>
-          <li><a href="#">Edit User</a></li>
+          <li><a href="./editInfo.php">Edit User</a></li>
           <li><a href="./php/authentication/log_out.php">Log Out</a></li>
         </ul>
       </div>
     </nav>
 
     <?php
+      session_start();
+      $firstName = $_SESSION['first_name'];
+      $lastName = $_SESSION['last_name'];
       include './php/tasks.php';
       include './php/catagories.php';
       echo('
         <p style="display: none;" id="fetched-tasks">' . $tasks . '</p>
         <p style="display: none;" id="fetched-categories">' . $categories . '</p>
-        <h1 style="text-align: center">Hello, ' . $username . '!</h1>
+        <h1 style="text-align: center">Hello, ' . $firstName. $lastName . '!</h1>
       ');
     ?>
 

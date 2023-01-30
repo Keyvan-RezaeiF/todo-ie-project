@@ -21,7 +21,7 @@
           <li><a href="../todos.php">Tasks</a></li>
           <li class="active"><a href="#">Add Task</a></li>
           <li><a href="./add_category.php">Add Category</a></li>
-          <li><a href="#">Edit User</a></li>
+          <li><a href="../editInfo.php">Edit User</a></li>
           <li><a href="./authentication/log_out.php">Log Out</a></li>
         </ul>
       </div>
