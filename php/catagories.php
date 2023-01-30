@@ -7,7 +7,7 @@
       <?php
         require('database/connect_database.php');
         if (!isset($_SESSION["signedin"]) && $_SESSION["signedin"] != '1'){
-          header('Location: index.html');
+          header('Location: ../todos.php');
         }
         $userID = $_SESSION['userID'];
         $sql="SELECT * FROM Catagory where userID ='" .$userID . "'";

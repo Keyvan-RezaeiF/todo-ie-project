@@ -14,8 +14,10 @@
 
         if (!empty($username) && !empty($acc_password) && $username == $row[1] && $acc_password == $row[2]) {
           $_SESSION['signedin'] = 1;
-          $_SESSION['username'] =  $row[1];
           $_SESSION['userID'] =  $row[0];
+          $_SESSION['username'] =  $row[1];
+          $_SESSION['first_name'] =  $row[2];
+          $_SESSION['last_name'] =  $row[3];
           header('Location: ../../todos.php');
           echo 'Loged In.';
         }

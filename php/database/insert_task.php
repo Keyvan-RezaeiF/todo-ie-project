@@ -24,6 +24,6 @@
       echo "Error inserting User: " . mysqli_error($con);
     }
   }
-  header('Location: ..\index.html');
+  header('Location: ../../todos.php');
 }
 ?>
