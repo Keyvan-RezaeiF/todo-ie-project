@@ -23,6 +23,8 @@
         echo "1 Record added";
       } else {
         echo "Error inserting User: " . mysqli_error($con);
+        echo 'the date are not correct , enter again';
+        echo "<a href='../add_task.php'></a>";
       }
     }
     header('Location: ../../todos.php');
