@@ -136,7 +136,6 @@ const categories = JSON.parse(fakeCatagories.textContent)
 const todosContainer = document.querySelector('.todos-container')
 todosContainer.insertAdjacentHTML('afterbegin', todosMaker(todos))
 
-console.log(todos.length)
 if (todos.length) {
   const categoriesContainer = document.querySelector('.categories-container')
   categoriesContainer.insertAdjacentHTML('afterbegin', categoriesMaker(categories))
@@ -162,21 +161,29 @@ const submitForm = (event) => {
   filterByCategory(currentFilter)
 }
 
-let hasShownNotif = false
 
-const checkForTodaysTasks = () => {
-  if (hasShownNotif) return
-
-  const today = new Date()
-  for( let todo of todos) {
-    const taskDay = new Date(+todo.endDate)
-
-    if(taskDay.toDateString() === today.toDateString()) {
-      alert(`you have a task with the title of "${todo.title}" todo today`)
-    }
-  }
+if (!localStorage.getItem('hasShownNotif')) {
+  localStorage.setItem('hasShownNotif', false)
 }
 
-checkForTodaysTasks()
+const checkForTodaysTasks = () => {
+  console.log('here')
 
-const myTimeout = setTimeout(checkForTodaysTasks, 300000);
+  const today = new Date()
+  for (let todo of todos) {
+    const taskDay = new Date(todo.due_time)
+
+    console.log(taskDay.toDateString(), today.toDateString())
+
+    if (taskDay.toDateString() === today.toDateString()) {
+      alert(`You have a task with the title of "${todo.title}" today!`)
+    }
+  }
+
+  localStorage.setItem('hasShownNotif', true)
+}
+
+console.log(localStorage.getItem('hasShownNotif'));
+if (localStorage.getItem('hasShownNotif') === 'false') {
+  setTimeout(() => checkForTodaysTasks(), 1000);
+}
