@@ -11,7 +11,7 @@
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">ToDo</a>
+          <a class="navbar-brand" href="./todos.php">ToDo</a>
         </div>
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Tasks</a></li>
@@ -32,7 +32,7 @@
       echo('
         <p style="display: none;" id="fetched-tasks">' . $tasks . '</p>
         <p style="display: none;" id="fetched-categories">' . $categories . '</p>
-        <h1 style="text-align: center">Hello, ' . $firstName. $lastName . '!</h1>
+        <h1 style="text-align: center">Hello, ' . $firstName.' '.$lastName . '!</h1>
       ');
     ?>
 

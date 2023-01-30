@@ -15,7 +15,7 @@
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">ToDo</a>
+          <a class="navbar-brand" href="../todos.php">ToDo</a>
         </div>
         <ul class="nav navbar-nav">
           <li><a href="../todos.php">Tasks</a></li>
@@ -44,8 +44,10 @@
         <select class="categories" name="categories" id="categories">
         </select>
       </div>
-      <br>start_date: <input type="date" name="start_date">
-      <br>due_date: <input type="date" name="due_date">
+      <div class="dates">
+        <br>start_date: <input type="date" name="start_date">
+        <br>due_date: <input type="date" name="due_date">
+      </div>
       <div class="button-container">
         <button class="submit-button" type="submit" value="add Task">Add task</button>
       </div>

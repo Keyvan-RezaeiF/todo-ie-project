@@ -11,7 +11,7 @@
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">ToDo</a>
+          <a class="navbar-brand" href="./todos.php">ToDo</a>
         </div>
         <ul class="nav navbar-nav">
           <li><a href="../todos.php">Tasks</a></li>
@@ -62,11 +62,11 @@
         </div>
         <div>
           <label for="task">Current Password:</label>
-          <input class="text-input" type="text" id="task" name="task" />
+          <input class="text-input" type="password" id="task" name="task" />
         </div>
         <div>
           <label for="task">New Password:</label>
-          <input class="text-input" type="text" id="task" name="password" />
+          <input class="text-input" type="password" id="task" name="password" />
         </div>
       </fieldset>
       <div class="button-container">
