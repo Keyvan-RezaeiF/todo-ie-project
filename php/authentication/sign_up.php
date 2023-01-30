@@ -24,11 +24,15 @@
           $sql="INSERT INTO Users (username,first_name,last_name, acc_password)
                 VALUES
                 ('$username','$firstname','$lastname','$password')";
+                $sql="SELECT * FROM Users where username = '" .$username . "'";
+                $result=mysqli_query($con,$sql);
+                $row=mysqli_fetch_row($result);
+
                  $_SESSION['signedin'] = 1;
                  $_SESSION['userID'] =  $row[0];
-                 $_SESSION['username'] =  $row[1];
-                 $_SESSION['first_name'] =  $row[2];
-                 $_SESSION['last_name'] =  $row[3];
+                 $_SESSION['username'] =  $username;
+                 $_SESSION['first_name'] =  $firstname;
+                 $_SESSION['last_name'] =  $lastname;
           if (mysqli_query($con, $sql)) {
             header('Location: ../../todos.php');
           } else {
