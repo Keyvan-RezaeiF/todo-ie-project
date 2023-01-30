@@ -21,17 +21,20 @@
           $_SESSION['last_name'] =  $row[3];
           header('Location: ../../todos.php');
         } else {
-          header('Location: log_in.html');
+          echo 'problem loging in';
+          echo "<a href='log_in.html'></a>";
         }
       } else {
-        header('Location: log_in.html');
-        echo 'You must enter a correct username and password.';
+        echo 'No Uesr Found';
+        echo "<a href='log_in.html'></a>";
       }
     } else {
-      header('Location: log_in.html');
-      echo "Error Inserting table: " . mysqli_error($con);
+
+        echo 'The Users are having a problem';
+        echo "<a href='log_in.html'></a>";
     }
   } else {
-    header('Location: log_in.html');
-  }
+          echo 'the field arent filled';
+          echo "<a href='log_in.html'></a>";
+    }
 ?>
